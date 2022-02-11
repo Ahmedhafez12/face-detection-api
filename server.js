@@ -12,7 +12,7 @@ const db = knex({
   client: 'pg',
   connection: {
     connectionString : process.env.DATABASE_URL,
-    ssl:true
+    ssl:true,
   }
 });
 
@@ -22,29 +22,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const database = {
-	users: [
-		{	
-			id: '1234',
-			name: 'Jenny',
-			email: 'jenny@mail.com',
-			password: '12345',
-			counter: 0,
-			joined: new Date()
-		}, 
-		{
-			id: '1235',
-			name: 'Joseph',
-			email: 'joseph@mail.com',
-			password: '12345',
-			counter: 0,
-			joined: new Date()
-		}
-	]
-}
-
 app.get('/', (req, res) => {
-	res.send('it is working');
+	res.json('it is working');
 })
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)});
