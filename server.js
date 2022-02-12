@@ -61,5 +61,5 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req,res)});
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`this is working! ${process.env.PORT}`);
-	console.log(db.select('name').from('users').where('id', '=', 2));
+	//console.log(db.select('name').from('users').where('id', '=', 2));
 })
