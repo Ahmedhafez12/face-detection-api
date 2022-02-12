@@ -45,6 +45,7 @@ const database = {
 
 app.get('/', (req, res) => {
 	res.send('it is working');
+	db.select('*').from('users');
 })
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)});
