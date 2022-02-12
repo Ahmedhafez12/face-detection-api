@@ -45,8 +45,6 @@ const database = {
 
 app.get('/', (req, res) => {
 	res.send('it is working');
-	res.send(db.select('*').from('users'));
-	res.send('not working');
 })
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)});
@@ -61,4 +59,5 @@ app.post('/imageurl', (req, res) => {image.handleApiCall(req,res)});
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`this is working! ${process.env.PORT}`);
+	console.log(db.select('*').from('users'));
 })
