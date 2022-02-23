@@ -11,7 +11,7 @@ const handleRegister = (req, res, db , bcrypt) => {
 			email:email
 		}).into('login').returning('email').then( loginEmail => {
 			return trx('users').returning('*').insert({
-				email:loginEmail[Object.keys(loginEmail)[0]][0],
+				email:loginEmail.email[0],
 				name:name,
 				joined: new Date()
 			}).then(user => {
