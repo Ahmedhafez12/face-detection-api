@@ -15,8 +15,7 @@ const handleSignin = (req, res, db, bcrypt) => {
 					res.json(user[0])
 				else{
 					res.status(400).json('unable to get user');
-					res.json(user);
-					res.json(user[0]);
+					console.log('not able to find user');
 				}
 
 			})
