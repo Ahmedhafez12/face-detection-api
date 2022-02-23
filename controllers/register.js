@@ -10,11 +10,11 @@ const handleRegister = (req, res, db , bcrypt) => {
 			hash:hash,
 			email:email
 		}).into('login').returning('email').then( loginEmail => {
-			return trx('users').returning('*').insert({
+			return trx.insert({
 				email:loginEmail[0],
 				name:name,
 				joined: new Date()
-			}).then(user => {
+			})into('users').returning('*').then(user => {
 				res.json(user[0]);
 			})
 		}).then(trx.commit).catch(trx.rollback)
