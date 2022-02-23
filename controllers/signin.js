@@ -14,7 +14,7 @@ const handleSignin = (req, res, db, bcrypt) => {
 				if(user.length)
 					res.json(user[0])
 				else{
-					res.status(400).json('unable to get user');
+					res.status(400).json(db('users').where('email', req.body.email));
 					console.log('not able to find user');
 				}
 
